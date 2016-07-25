@@ -16,16 +16,10 @@
     "theme": "ace/theme/atom_dark"
   },
   "exampleFiles": [
-    "default.yaml",
-    "heroku-pets.yaml",
-    "minimal.yaml",
-    "echo.yaml",
-    "petstore_simple.yaml",
-    "petstore_full.yaml",
-    "basic-auth.yaml",
-    "security.yaml",
-    "instagram.yaml",
-    "twitter.yaml"
+    "forge-oauth2.yaml",
+    "forge-oss.yaml",
+    "forge-datamanagement.yaml",
+    "forge-modelderivative.yaml"
   ],
   "autocompleteExtension": {},
   "useBackendForStorage": false,

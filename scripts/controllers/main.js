@@ -41,7 +41,7 @@ SwaggerEditor.controller('MainCtrl', function MainCtrl(
 
       // If there is no saved YAML either, load the default example
       } else if (!yaml) {
-        url = defaults.examplesFolder + defaults.exampleFiles[0];
+        url = /* defaults.examplesFolder + */ defaults.exampleFiles[0];
       }
 
       if (url) {
