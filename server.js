@@ -14,7 +14,7 @@ var argv = require('minimist')(process.argv.slice(2));
  * @param {function} cb - Error first success callback
 */
 function startServer(port, cb) {
-  config.entry.app.unshift('webpack-dev-server/client?http://' + IP + ':' + port + '/');
+  config.entry.app.unshift('webpack-dev-server/client?https://' + IP + ':' + port + '/');
 
   var compiler = webpack(config);
 
@@ -42,7 +42,7 @@ if (require.main === module) {
       return console.log(err);
     }
 
-    var url = 'http://' + IP + ':' + PORT;
+    var url = 'https://' + IP + ':' + PORT;
 
     console.log('Development server started at', url);
 
