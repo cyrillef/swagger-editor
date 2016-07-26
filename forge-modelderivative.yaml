@@ -11,14 +11,15 @@ info:
     * Translate designs into SVF format for extracting data and for rendering files in the Viewer.
     * Extract object heirarchy trees, properties, and geometries of selected parts of a design.
     * Create different-sized thumbnails from design files.
-    
+
     ![](https://developer.doc.autodesk.com/bPlouYTd/7/_images/MD-overview-diagram.png)
-    
+
     Get started by taking a look at our Step-by-Step Tutorials to see typical Model Derivative API workflows. The API Basics and Field Guide sections will help you understand the high-level concepts, and the API Reference section will give you the information you need to refine and create your own custom flows.
   contact:
-    name: "API Support"
-    url: "http://forums.autodesk.com/t5/view-and-data-api/bd-p/95"
-    email: "forge-help@autodesk.com"
+    name: "Forge API Team"
+    #url: "http://forums.autodesk.com/t5/view-and-data-api/bd-p/95"
+    url: "http://stackoverflow.com/questions/tagged/autodesk-model-derivative"
+    email: "forge.help@autodesk.com"
   termsOfService: "http://www.autodesk.com/company/legal-notices-trademarks/terms-of-service-autodesk360-web-services/autodesk-web-services-api-beta-terms-of-service"
   #license:
   #  name:
@@ -300,7 +301,7 @@ paths:
         The following image displays a typical list of properties for a Revit object:
 
         ![](https://developer.doc.autodesk.com/bPlouYTd/7/_images/Properties.png)
-        
+
         To call this endpoint you need to first call the [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) endpoint, which returns a list of model view (metadata) IDs for a design input model. Select a model view (metadata) ID to use when calling the Get Properties endpoint.
 
         Note that you can only get properties from a design input file that was previously translated into an SVF file.
@@ -385,11 +386,11 @@ parameters:
       This is the standard RFC 2616 range request header. It only supports one range specifier per request:
 
       1. Range:bytes=0-63 (returns the first 64 bytes)
-      
+
       2. Range:bytes=64-127 (returns the second set of 64 bytes)
-      
+
       3. Range:bytes=1022- (returns all the bytes from offset 1022 to the end)
-      
+
       4. If the range header is not specified, the whole content is returned.
     required: false
     type: integer
@@ -420,7 +421,7 @@ parameters:
     in: header
     description: |
       `true`: the endpoint replaces previously translated output file types with the newly generated derivatives
-      
+
       `false` (default): previously created derivatives are not replaced
     required: false
     type: boolean
@@ -441,7 +442,7 @@ parameters:
     required: false
     type: integer
     format: int32
-	
+
 definitions:
   InputStream:
     description: application/octet_stream body support
@@ -459,7 +460,7 @@ definitions:
       message:
         type: array
         items:
-          type: string 
+          type: string
   messages:
     description: Translation service message
     type: array
@@ -637,7 +638,7 @@ definitions:
           exportFileStructure:
             description: |
               `single` (default): creates one STL file for all the input files (assembly file)
-              
+
               `multiple`: creates a separate STL file for each object
             type: string
             enum: [ single, multiple ]
@@ -712,7 +713,7 @@ definitions:
           exportFileStructure:
             description: |
               `single` (default): creates one OBJ file for all the input files (assembly file)
-              
+
               `multiple`: creates a separate OBJ file for each object
             type: string
             enum: [ single, multiple ]
@@ -801,7 +802,7 @@ definitions:
 #    x-ads-troubleshooting:
 #      description: Provides information about the server failure
 #      type: string
-  
+
 responses:
   delete-manifest-result:
     description: OK, Manifest and derivatives are deleted. Note that this code is also returned if the manifest does not exist.
@@ -988,7 +989,7 @@ responses:
   job:
     description: OK, Success. Note that you still need to check whether the asynchronous job is complete by calling the [GET {urn}/manifest](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-manifest-GET) endpoint.
     schema: { $ref: '#/definitions/job' }
-    headers: 
+    headers:
       x-ads-app-identifier:
         description: The service identifier, including version number.
         type: string
@@ -1008,7 +1009,7 @@ responses:
   thumbnail:
     description: OK, Success
     schema: { $ref: '#/definitions/InputStream' }
-    headers: 
+    headers:
       x-ads-name:
         description: Filename of the thumbnail. Filename extension is PNG.
         type: string
@@ -1031,7 +1032,7 @@ responses:
       x-ads-troubleshooting:
         description: Provides information about the server failure
         type: string
-	
+
   CREATED_JOB:
     description: The requested file type has been previously generated and has not been replaced by the new source file.
     schema: { $ref: '#/definitions/job' }
@@ -1053,7 +1054,7 @@ responses:
         description: Provides information about the server failure
         type: string
   ACCEPTED:
-    description: ACCEPTED, Request accepted but processing not complete. Call this endpoint iteratively until a 200 is returned. 
+    description: ACCEPTED, Request accepted but processing not complete. Call this endpoint iteratively until a 200 is returned.
     schema:
       title: result
       type: object

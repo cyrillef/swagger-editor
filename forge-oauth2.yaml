@@ -13,9 +13,10 @@ info:
     Step-by-step tutorials that walk you through a few common workflows
     Documentation on each of the OAuth REST endpoints
   contact:
-    name: "API Support"
-    url: "http://forums.autodesk.com/t5/view-and-data-api/bd-p/95"
-    email: "forge-help@autodesk.com"
+    name: "Forge API Team"
+    #url: "http://forums.autodesk.com/t5/view-and-data-api/bd-p/95"
+    url: "http://stackoverflow.com/questions/tagged/autodesk-forge+oauth"
+    email: "forge.help@autodesk.com"
   termsOfService: "http://www.autodesk.com/company/legal-notices-trademarks/terms-of-service-autodesk360-web-services/autodesk-web-services-api-beta-terms-of-service"
   #license:
   #  name:
@@ -37,7 +38,7 @@ tags:
     description: Forge 2-legged oAuth context
   - name: Informational
     description: Forge oAuth Information endpoints
-    
+
 securityDefinitions:
   oauth2_access_code:
     type: oauth2
@@ -79,7 +80,7 @@ securityDefinitions:
 
 paths:
   '/authentication/v1/authenticate':
-    post: 
+    post:
       summary: POST authenticate
       operationId: authenticate
       description: >
@@ -196,7 +197,7 @@ paths:
       x-ads_command_line_example: "curl -v 'https://developer.api.autodesk.com/userprofile/v1/users/@me' -X 'GET' -H 'Authorization: Bearer 4viS1MuwMU0X4XVpMyISPb2cla2q'"
       tags:
         - Informational
-   
+
 parameters:
   client_id:
     name: client_id
@@ -257,7 +258,7 @@ parameters:
     description: >
       Space-separated list of required scopes
       Note: A URL-encoded space is* ``%20``.
-      
+
       See the* `Scopes </en/docs/oauth/v2/overview/scopes>` *page for more information on when scopes are required.
     required: false
     type: string
@@ -291,7 +292,7 @@ parameters:
       Note: This must match the pattern of the callback URL field of the app’s registration in the My Apps section. The pattern may include wildcards after the hostname, allowing different redirect_uri values to be specified in different parts of your app.
     required: true
     type: string
-          
+
 definitions:
   Bearer:
     type: object
@@ -345,12 +346,12 @@ definitions:
           false if the user’s email address has not been verified
         type: boolean
       2FaEnabled:
-        description: >	
+        description: >
           true if the user has enabled two-factor authentication
           false if the user has not enabled two-factor authentication
         type: boolean
       profileImages:
-        description: 
+        description:
           A flat JSON object of attribute-value pairs in which the attributes specify available profile image sizes in the format sizeX<pixels> (where <pixels> is an integer that represents both height and width in pixels of square profile images) and the values are URLs for downloading the images via HTTP
         type: object
     required:
@@ -435,6 +436,6 @@ responses:
   INTERNAL_SERVER_ERROR:
     description: >
       Internal Server Error
-      * ERR-003: Generic internal server error.            
+      * ERR-003: Generic internal server error.
     schema:
       $ref: '#/definitions/oAuthError'
